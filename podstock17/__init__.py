@@ -7,7 +7,7 @@ scheduleUrl = 'https://frab.podstock.de/de/podstock2017/public/schedule.xml'
 
 def introFrames(p):
 	# 4 sec. show nothing (animation in video) 
-	frames = 100
+	frames = 114
 	for i in range(0, frames):
 		yield (
 			('layer1', 'style',    'opacity', "%.4f" % 0),  # nix 
@@ -21,7 +21,7 @@ def introFrames(p):
 		)
 
 	# 7.8 sec show text
-	frames = 195
+	frames = 205
 	for i in range(0, frames):
 		yield (
 			('layer1', 'style',    'opacity', "%.4f" %1),

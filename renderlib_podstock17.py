@@ -157,7 +157,8 @@ def rendertask(task):
 
 	if task.outfile.endswith('.ts'):
 		# fernsehmuell (podstock17) added overlay filter to use an external background video for speed improvement
-		cmd = 'cd {0} && ffmpeg -i intro_BG.mov -f image2 -i .frames/%04d.png -filter_complex overlay -ar 48000 -ac 1 -f s16le -i /dev/zero -ar 48000 -ac 1 -f s16le -i /dev/zero -map 0:0 -c:v mpeg2video -q:v 0 -aspect 16:9 -map 1:0 -map 2:0 -shortest -f mpegts "{1}"'.format(task.workdir, task.outfile)
+		#cmd = 'cd {0} && ffmpeg -i intro_BG.mov -f image2 -i .frames/%04d.png -filter_complex overlay -ar 48000 -ac 1 -f s16le -i /dev/zero -ar 48000 -ac 1 -f s16le -i /dev/zero -map 0:0 -c:v mpeg2video -q:v 0 -aspect 16:9 -map 1:0 -map 2:0 -shortest -f mpegts "{1}"'.format(task.workdir, task.outfile)
+		cmd = 'cd {0} && ffmpeg -i intro_BG.mov -f image2 -i .frames/%04d.png -filter_complex overlay -c:v mpeg2video -q:v 0 -aspect 16:9 -map 0:1 -f mpegts "{1}"'.format(task.workdir, task.outfile)
 	else:
 		cmd = 'cd {0} && ffmpeg -ar 48000 -ac 2 -f s16le -i /dev/zero -f image2 -i .frames/%04d.png -target pal-dv -aspect 16:9 -shortest "{1}"'.format(task.workdir, task.outfile)
 
